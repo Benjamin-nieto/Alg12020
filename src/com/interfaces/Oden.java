@@ -77,6 +77,7 @@ public class Oden extends javax.swing.JFrame {
         panel2.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 190, -1));
 
         btnAction.setText("Operar");
+        btnAction.setEnabled(false);
         btnAction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActionActionPerformed(evt);
@@ -85,7 +86,27 @@ public class Oden extends javax.swing.JFrame {
         panel2.add(btnAction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 190, -1));
 
         cmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Llenar Vector 1 Automático", "Llenar Vector 2 Automático", "Llenar Vector 1 Manual", "Llenar Vector 2 Manual", "Promedio Elementos V1", "Mayor Valor V2", "Sumatoria V1", "Productoria V2", "1. Sumatoria", "2. Productoria", "3. Mayor elemento", "4. Menor elemento", "5. Elementos pares", "6. Elementos impares", "7. Elementos primos", "8. Suma de un vector1 y vector2", "9. Resta de un vector1 y vector2", "10. Vector que se reite y diga cual es", "11. Union de dos vectores", "11. Interseccion de los dos conjuntos de vectores", "12. Diferencia de vector 1 con vector2", "13. Diferencia de vector 2 con vector 1" }));
-        panel2.add(cmb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 230, -1));
+        cmb1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb1ItemStateChanged(evt);
+            }
+        });
+        cmb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb1MouseClicked(evt);
+            }
+        });
+        cmb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb1ActionPerformed(evt);
+            }
+        });
+        cmb1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cmb1PropertyChange(evt);
+            }
+        });
+        panel2.add(cmb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 240, -1));
 
         btnClean.setText("Limpiar");
         btnClean.addActionListener(new java.awt.event.ActionListener() {
@@ -143,34 +164,70 @@ public class Oden extends javax.swing.JFrame {
 
         v1 = new int[tv1];
         v2 = new int[tv2];
+
+        int op2 = cmb1.getSelectedIndex();
+
+        if (v1 != null && v2 != null) {
+            btnAction.setEnabled(true);
+        }
+        
+        switch (op2) {
+            case 2: // Llenar Vector 2 Automático
+                v1 = Methods.llenar_manual(v1);
+                break;
+            case 3: // Llenar Vector 1 Manual
+                v2 = Methods.llenar_manual(v2);
+                break;
+        }
+
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionActionPerformed
         // TODO add your handling code here:
-                int op;
+        int op;
 
         op = cmb1.getSelectedIndex();
 
         switch (op) {
-            case 0:
+            case 0:  // Llenar Vector 1 Automático
                 area1.append("VECTOR 1 \n");
                 v1 = Methods.llenar_automatico(v1);
                 area1.append(Methods.mostrar(v1) + "\n");
                 break;
-            case 1:
+            case 1: // Llenar Vector 2 Automático
                 area1.append("VECTOR 2 \n");
                 v2 = Methods.llenar_automatico(v2);
                 area1.append(Methods.mostrar(v2) + "\n");
                 break;
-            case 4:
+            case 2: // Llenar Vector 1 Manual
+                // v1 = Methods.llenar_manual(v1);
+                 area1.append("VECTOR MANUAL 1 \n");
+                 area1.append(Methods.mostrar(v1) + "\n");
+                break;
+            case 3: // Llenar Vector 2 Manual
+                //v2 = Methods.llenar_manual(v2);
+                area1.append("VECTOR MANUAL 2 \n");
+                area1.append(Methods.mostrar(v2) + "\n");
+                break;
+            case 4: // Promedio Elementos V1
                 area1.append("PROMEDIO VECTOR 1 \n");
                 area1.append("" + Methods.promedio(v1));
                 System.out.println(v1[0]);
                 break;
-            case 5:
+            case 5: // Mayor Valor V2
                 area1.append("MAYOR VALOR VECTOR 2 \n");
                 area1.append("" + Methods.mayor_valor(v2));
                 break;
+            case 6: // Sumatoria V1
+                area1.append("SUMATORIA VECTOR 1 \n");
+                area1.append("" + Methods.sumatoria(v1));
+                break;
+            case 7: // Productoria
+                area1.append("PRODUCTORIA VECTOR 1 \n");
+                area1.append("" + Methods.mayor_valor(v1));
+                break;
+                
 
         }
 
@@ -187,13 +244,31 @@ public class Oden extends javax.swing.JFrame {
         limiar_e();
     }//GEN-LAST:event_btnCleanActionPerformed
 
-    
-    public void limiar_e(){
+    private void cmb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb1MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cmb1MouseClicked
+
+    private void cmb1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmb1PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb1PropertyChange
+
+    private void cmb1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb1ItemStateChanged
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_cmb1ItemStateChanged
+
+    private void cmb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb1ActionPerformed
+
+    public void limiar_e() {
         txt1.setText(null);
         txt2.setText(null);
         area1.setText(null);
         cmb1.setSelectedIndex(0);
     }
+
     /**
      * @param args the command line arguments
      */

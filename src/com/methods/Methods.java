@@ -5,6 +5,8 @@
  */
 package com.methods;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author erichaag
@@ -18,7 +20,14 @@ public class Methods {
         }
         return v;
     }
-    
+  
+      public static int[] llenar_manual(int v[]){
+        for (int i = 0; i < v.length; i++) {
+            String num = JOptionPane.showInputDialog("Digite el valor de la posición "+(i+1)+" de "+v.length+"" );
+            v[i] = Integer.parseInt(num);
+        }
+        return v;
+    }
     public static String mostrar(int v[]){
         String aux ="";
         for (int i = 0; i < v.length; i++) {
@@ -43,6 +52,22 @@ public class Methods {
             }
         }
         return mayor;
+    }
+
+    public static int sumatoria(int[] v) {
+        int aux=0;
+        for (int i = 0; i < v.length; i++) {
+            aux += v[i];
+        }
+        return aux;
+    }
+    
+      public static int proctoria(int[] v) {
+        int aux=0;
+        for (int i = 0; i < v.length; i++) {
+            aux += v[i];
+        }
+        return aux;
     }
     
 }
