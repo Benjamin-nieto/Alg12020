@@ -6,8 +6,6 @@
 package com.interfaces;
 
 import com.methods.Methods;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -87,7 +85,7 @@ public class Oden extends javax.swing.JFrame {
         panel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
         panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCreate.setText("Crear vector");
+        btnCreate.setText("LLenar");
         btnCreate.setEnabled(false);
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +94,7 @@ public class Oden extends javax.swing.JFrame {
         });
         panel2.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 190, -1));
 
-        btnAction.setText("Operar");
+        btnAction.setText("Mostrar");
         btnAction.setEnabled(false);
         btnAction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,8 +149,10 @@ public class Oden extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
+        area1.setEditable(false);
         area1.setColumns(20);
         area1.setRows(5);
+        area1.setEnabled(false);
         jScrollPane1.setViewportView(area1);
 
         jPanel3.add(jScrollPane1);
@@ -177,27 +177,40 @@ public class Oden extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        int tv1, tv2;
+        try {
+            int tv1, tv2;
 
-        tv1 = Integer.parseInt(txt1.getText());
-        tv2 = Integer.parseInt(txt2.getText());
+            tv1 = Integer.parseInt(txt1.getText());
+            tv2 = Integer.parseInt(txt2.getText());
 
-        v1 = new int[tv1];
-        v2 = new int[tv2];
+            v1 = new int[tv1];
+            v2 = new int[tv2];
 
-        int op2 = cmb1.getSelectedIndex();
-
-        if (v1 != null && v2 != null) {
-            btnAction.setEnabled(true);
-        }
-
-        switch (op2) {
-            case 2: // Llenar Vector 2 Automático
-                v1 = Methods.llenar_manual(v1);
-                break;
-            case 3: // Llenar Vector 1 Manual
-                v2 = Methods.llenar_manual(v2);
-                break;
+            if (v1 != null && v2 != null) {
+                btnAction.setEnabled(true);
+            }
+            int op2 = cmb1.getSelectedIndex();
+            switch (op2) {
+                case 0: // Llenar Vector 1 Automático
+                    v1 = Methods.llenar_automatico(v1);
+                    valida_vector(v1);
+                    break;
+                case 1:
+                    v2 = Methods.llenar_automatico(v2);
+                    valida_vector(v2);
+                    break;
+                case 2: // Llenar Vector 1 manual
+                    v1 = Methods.llenar_manual(v1);
+                    valida_vector(v1);
+                    break;
+                case 3: // Llenar Vector 2 Manual
+                    v2 = Methods.llenar_manual(v2);
+                    valida_vector(v2);
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Valide valores de los vectores");
+            txt1.requestFocus();
         }
 
 
@@ -212,13 +225,31 @@ public class Oden extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Valor no valido solo numeros"); // mensaje de error y
             fild.requestFocus();
             String s = fild.getText(); // luego de poner el foco busco el texto
-            String[] ray = s.split("([Aa-zZ])",-1); // valido las letras en el texto y las inserto en ARRAY[]
+            String[] ray = s.split("([Aa-zZ])", -1); // valido las letras en el texto y las inserto en ARRAY[]
             for (int i = 0; i < ray.length; i++) { // recorro array sin letras para insertarlo en variable STRINGBUFFER
                 aux = aux.append(ray[i]); // variable llena
             }
             fild.setText(aux.toString()); // variable devuelta al field
         }
 
+    }
+
+    public void valida_vector(int[] v) {
+        if (v == null) {
+            btnCreate.setEnabled(true);
+            btnAction.setEnabled(false);
+
+        } else {
+            if (v.length == 0) {
+                btnCreate.setEnabled(true);
+                btnAction.setEnabled(false);
+
+            } else {
+                btnCreate.setEnabled(true);
+                btnAction.setEnabled(true);
+            }
+
+        }
     }
     private void btnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionActionPerformed
         // TODO add your handling code here:
@@ -227,14 +258,13 @@ public class Oden extends javax.swing.JFrame {
         op = cmb1.getSelectedIndex();
 
         switch (op) {
+            /*VECTORES LLENOS*/
             case 0:  // Llenar Vector 1 Automático
                 area1.append("VECTOR 1 \n");
-                v1 = Methods.llenar_automatico(v1);
                 area1.append(Methods.mostrar(v1) + "\n");
                 break;
             case 1: // Llenar Vector 2 Automático
                 area1.append("VECTOR 2 \n");
-                v2 = Methods.llenar_automatico(v2);
                 area1.append(Methods.mostrar(v2) + "\n");
                 break;
             case 2: // Llenar Vector 1 Manual
@@ -247,22 +277,24 @@ public class Oden extends javax.swing.JFrame {
                 area1.append("VECTOR MANUAL 2 \n");
                 area1.append(Methods.mostrar(v2) + "\n");
                 break;
+            /*VECTORES LLENOS*/
+
             case 4: // Promedio Elementos V1
                 area1.append("PROMEDIO VECTOR 1 \n");
-                area1.append("" + Methods.promedio(v1));
+                area1.append("" + Methods.promedio(v1)+"\n");
                 System.out.println(v1[0]);
                 break;
             case 5: // Mayor Valor V2
                 area1.append("MAYOR VALOR VECTOR 2 \n");
-                area1.append("" + Methods.mayor_valor(v2));
+                area1.append("" + Methods.mayor_valor(v2)+"\n");
                 break;
             case 6: // Sumatoria V1
                 area1.append("SUMATORIA VECTOR 1 \n");
-                area1.append("" + Methods.sumatoria(v1));
+                area1.append("" + Methods.sumatoria(v1)+"\n");
                 break;
             case 7: // Productoria
                 area1.append("PRODUCTORIA VECTOR 1 \n");
-                area1.append("" + Methods.mayor_valor(v1));
+                area1.append("" + Methods.mayor_valor(v1)+"\n");
                 break;
 
         }
@@ -295,8 +327,23 @@ public class Oden extends javax.swing.JFrame {
     }//GEN-LAST:event_cmb1ItemStateChanged
 
     private void cmb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb1ActionPerformed
+        int op2 = cmb1.getSelectedIndex();
 
-       // valida_filds();
+        switch (op2) {
+            case 0: // Llenar Vector 1 Automático
+                valida_vector(v1);
+                break;
+            case 1: // Llenar Vector 2 Automático
+                valida_vector(v2);
+                break;
+            case 2: // Llenar Vector 1 Manual
+                valida_vector(v1);
+                break;
+            case 3: // Llenar Vector 2 Manual
+                valida_vector(v2);
+                break;
+        }
+
 
     }//GEN-LAST:event_cmb1ActionPerformed
 
@@ -307,7 +354,7 @@ public class Oden extends javax.swing.JFrame {
 
     private void txt1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt1KeyReleased
         // TODO add your handling code here:
-          valida_filds(txt1);
+        valida_filds(txt1);
     }//GEN-LAST:event_txt1KeyReleased
 
     private void txt2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt2KeyReleased
@@ -321,6 +368,7 @@ public class Oden extends javax.swing.JFrame {
         area1.setText(null);
         cmb1.setSelectedIndex(0);
         btnAction.setEnabled(false);
+        btnCreate.setEnabled(false);
     }
 
     /**
