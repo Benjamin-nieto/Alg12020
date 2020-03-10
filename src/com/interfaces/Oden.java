@@ -6,6 +6,10 @@
 package com.interfaces;
 
 import com.methods.Methods;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -60,7 +64,22 @@ public class Oden extends javax.swing.JFrame {
 
         jLabel2.setText("Tamaño vector 1:");
         panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        txt2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt2KeyReleased(evt);
+            }
+        });
         panel1.add(txt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 60, 30));
+
+        txt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt1KeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt1KeyReleased(evt);
+            }
+        });
         panel1.add(txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 60, 30));
 
         Principal.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 220, 210));
@@ -69,6 +88,7 @@ public class Oden extends javax.swing.JFrame {
         panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCreate.setText("Crear vector");
+        btnCreate.setEnabled(false);
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
@@ -170,7 +190,7 @@ public class Oden extends javax.swing.JFrame {
         if (v1 != null && v2 != null) {
             btnAction.setEnabled(true);
         }
-        
+
         switch (op2) {
             case 2: // Llenar Vector 2 Automático
                 v1 = Methods.llenar_manual(v1);
@@ -183,6 +203,23 @@ public class Oden extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
+    public void valida_filds(JTextField fild) {
+        int tv1;
+        StringBuffer aux = new StringBuffer(); // requerido para convertir array to string
+        try {
+            tv1 = Integer.parseInt(fild.getText()); // si valor es numero bien
+        } catch (NumberFormatException e) { // si no es numero
+            JOptionPane.showMessageDialog(this, "Valor no valido solo numeros"); // mensaje de error y
+            fild.requestFocus();
+            String s = fild.getText(); // luego de poner el foco busco el texto
+            String[] ray = s.split("([Aa-zZ])",-1); // valido las letras en el texto y las inserto en ARRAY[]
+            for (int i = 0; i < ray.length; i++) { // recorro array sin letras para insertarlo en variable STRINGBUFFER
+                aux = aux.append(ray[i]); // variable llena
+            }
+            fild.setText(aux.toString()); // variable devuelta al field
+        }
+
+    }
     private void btnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionActionPerformed
         // TODO add your handling code here:
         int op;
@@ -202,8 +239,8 @@ public class Oden extends javax.swing.JFrame {
                 break;
             case 2: // Llenar Vector 1 Manual
                 // v1 = Methods.llenar_manual(v1);
-                 area1.append("VECTOR MANUAL 1 \n");
-                 area1.append(Methods.mostrar(v1) + "\n");
+                area1.append("VECTOR MANUAL 1 \n");
+                area1.append(Methods.mostrar(v1) + "\n");
                 break;
             case 3: // Llenar Vector 2 Manual
                 //v2 = Methods.llenar_manual(v2);
@@ -227,7 +264,6 @@ public class Oden extends javax.swing.JFrame {
                 area1.append("PRODUCTORIA VECTOR 1 \n");
                 area1.append("" + Methods.mayor_valor(v1));
                 break;
-                
 
         }
 
@@ -242,6 +278,7 @@ public class Oden extends javax.swing.JFrame {
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         // TODO add your handling code here:
         limiar_e();
+
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void cmb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb1MouseClicked
@@ -254,19 +291,36 @@ public class Oden extends javax.swing.JFrame {
     }//GEN-LAST:event_cmb1PropertyChange
 
     private void cmb1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb1ItemStateChanged
-        // TODO add your handling code here:
-      
+        // TODO add your handling code he
     }//GEN-LAST:event_cmb1ItemStateChanged
 
     private void cmb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb1ActionPerformed
-        // TODO add your handling code here:
+
+       // valida_filds();
+
     }//GEN-LAST:event_cmb1ActionPerformed
+
+    private void txt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt1KeyTyped
+        // TODO add your handling code h
+
+    }//GEN-LAST:event_txt1KeyTyped
+
+    private void txt1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt1KeyReleased
+        // TODO add your handling code here:
+          valida_filds(txt1);
+    }//GEN-LAST:event_txt1KeyReleased
+
+    private void txt2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt2KeyReleased
+        // TODO add your handling code here:
+        valida_filds(txt2);
+    }//GEN-LAST:event_txt2KeyReleased
 
     public void limiar_e() {
         txt1.setText(null);
         txt2.setText(null);
         area1.setText(null);
         cmb1.setSelectedIndex(0);
+        btnAction.setEnabled(false);
     }
 
     /**
@@ -322,4 +376,8 @@ public class Oden extends javax.swing.JFrame {
     private javax.swing.JTextField txt1;
     private javax.swing.JTextField txt2;
     // End of variables declaration//GEN-END:variables
+
+    private char getKeyChar(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
