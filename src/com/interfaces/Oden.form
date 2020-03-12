@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -152,7 +152,7 @@
             <Component class="javax.swing.JComboBox" name="cmb1">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="22">
+                  <StringArray count="20">
                     <StringItem index="0" value="Llenar Vector 1 Autom&#xe1;tico"/>
                     <StringItem index="1" value="Llenar Vector 2 Autom&#xe1;tico"/>
                     <StringItem index="2" value="Llenar Vector 1 Manual"/>
@@ -161,20 +161,18 @@
                     <StringItem index="5" value="Mayor Valor V2"/>
                     <StringItem index="6" value="Sumatoria V1"/>
                     <StringItem index="7" value="Productoria V2"/>
-                    <StringItem index="8" value="1. Sumatoria"/>
-                    <StringItem index="9" value="2. Productoria"/>
-                    <StringItem index="10" value="3. Mayor elemento"/>
-                    <StringItem index="11" value="4. Menor elemento"/>
-                    <StringItem index="12" value="5. Elementos pares"/>
-                    <StringItem index="13" value="6. Elementos impares"/>
-                    <StringItem index="14" value="7. Elementos primos"/>
-                    <StringItem index="15" value="8. Suma de un vector1 y vector2"/>
-                    <StringItem index="16" value="9. Resta de un vector1 y vector2"/>
-                    <StringItem index="17" value="10. Vector que se reite y diga cual es"/>
-                    <StringItem index="18" value="11. Union de dos vectores"/>
-                    <StringItem index="19" value="11. Interseccion de los dos conjuntos de vectores"/>
-                    <StringItem index="20" value="12. Diferencia de vector 1 con vector2"/>
-                    <StringItem index="21" value="13. Diferencia de vector 2 con vector 1"/>
+                    <StringItem index="8" value="Mayor elemento V1"/>
+                    <StringItem index="9" value="Menor elemento V2"/>
+                    <StringItem index="10" value="Elementos pares"/>
+                    <StringItem index="11" value="Elementos impares"/>
+                    <StringItem index="12" value="Elementos primos"/>
+                    <StringItem index="13" value="Suma de un vector1 y vector2"/>
+                    <StringItem index="14" value="Resta de un vector1 y vector2"/>
+                    <StringItem index="15" value="Vector que se reite y diga cual es"/>
+                    <StringItem index="16" value="Union de dos vectores"/>
+                    <StringItem index="17" value="Interseccion de los dos conjuntos de vectores"/>
+                    <StringItem index="18" value="Diferencia de vector 1 con vector2"/>
+                    <StringItem index="19" value="Diferencia de vector 2 con vector 1"/>
                   </StringArray>
                 </Property>
               </Properties>

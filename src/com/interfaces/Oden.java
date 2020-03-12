@@ -103,7 +103,7 @@ public class Oden extends javax.swing.JFrame {
         });
         panel2.add(btnAction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 190, -1));
 
-        cmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Llenar Vector 1 Automático", "Llenar Vector 2 Automático", "Llenar Vector 1 Manual", "Llenar Vector 2 Manual", "Promedio Elementos V1", "Mayor Valor V2", "Sumatoria V1", "Productoria V2", "1. Sumatoria", "2. Productoria", "3. Mayor elemento", "4. Menor elemento", "5. Elementos pares", "6. Elementos impares", "7. Elementos primos", "8. Suma de un vector1 y vector2", "9. Resta de un vector1 y vector2", "10. Vector que se reite y diga cual es", "11. Union de dos vectores", "11. Interseccion de los dos conjuntos de vectores", "12. Diferencia de vector 1 con vector2", "13. Diferencia de vector 2 con vector 1" }));
+        cmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Llenar Vector 1 Automático", "Llenar Vector 2 Automático", "Llenar Vector 1 Manual", "Llenar Vector 2 Manual", "Promedio Elementos V1", "Mayor Valor V2", "Sumatoria V1", "Productoria V2", "Mayor elemento V1", "Menor elemento V2", "Elementos pares", "Elementos impares", "Elementos primos", "Suma de un vector1 y vector2", "Resta de un vector1 y vector2", "Vector que se reite y diga cual es", "Union de dos vectores", "Interseccion de los dos conjuntos de vectores", "Diferencia de vector 1 con vector2", "Diferencia de vector 2 con vector 1" }));
         cmb1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmb1ItemStateChanged(evt);
@@ -173,6 +173,7 @@ public class Oden extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -280,7 +281,7 @@ public class Oden extends javax.swing.JFrame {
             /*VECTORES LLENOS*/
 
             case 4: // Promedio Elementos V1
-                area1.append("PROMEDIO VECTOR 1 \n");
+                area1.append("PROMEDIO ELEMENTOS VECTOR 1 \n");
                 area1.append("" + Methods.promedio(v1)+"\n");
                 System.out.println(v1[0]);
                 break;
@@ -292,11 +293,27 @@ public class Oden extends javax.swing.JFrame {
                 area1.append("SUMATORIA VECTOR 1 \n");
                 area1.append("" + Methods.sumatoria(v1)+"\n");
                 break;
-            case 7: // Productoria
-                area1.append("PRODUCTORIA VECTOR 1 \n");
-                area1.append("" + Methods.mayor_valor(v1)+"\n");
+            case 7: // Productoria V2
+                area1.append("PRODUCTORIA VECTOR 2 \n");
+                area1.append("" + Methods.productoria(v2)+"\n");
                 break;
-
+                
+              case 8: // Mayor elemento V1
+                area1.append("MAYOR ELEMENTO DEL VECTOR 1 \n");
+                area1.append("" + Methods.mayor_q(v1)+"\n");
+                break;
+            case 9: // Menor Valor V2
+                area1.append("MENOR VALOR VECTOR 2 \n");
+                area1.append("" + Methods.menor_q(v2)+"\n");
+                break;
+            case 10: // Pares V1
+                area1.append("CANTIDAD DE ELEMENTOS PARES DEL VECTOR 1 \n");
+                area1.append("" + Methods.par(v1)+"\n");
+                break;
+            case 11: // Impares V2
+                area1.append("CANTIDAD DE ELEMENTOS IMPARES DEL VECTOR 2 \n");
+                area1.append("" + Methods.impar(v2)+"\n");
+                break;
         }
 
 
@@ -304,7 +321,7 @@ public class Oden extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+         System.exit(0);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
