@@ -128,25 +128,24 @@ public class Methods {
         return pri;
     }
 
-    public static int[] sumvectors(int[] v1,int[] v2) {
+    public static int[] sumvectors(int[] v1, int[] v2) {
         int[] totalsum = new int[v1.length];
-    //     int[] totalres = new int[v1.length];
+        //     int[] totalres = new int[v1.length];
 
         int val1 = 0, val2 = 0;
         for (int i = 0; i < totalsum.length; i++) {
             val1 = v1[i];
             val2 = v2[i];
             totalsum[i] = (val1 + val2);
-    //      totalres[i] = (val1 - val2);
+            //      totalres[i] = (val1 - val2);
         }
 
         return totalsum;
     }
-    
-    
-    public static int[] restvectors(int[] v1,int[] v2) {
-       
-       int[] totalres = new int[v1.length];
+
+    public static int[] restvectors(int[] v1, int[] v2) {
+
+        int[] totalres = new int[v1.length];
 
         int val1 = 0, val2 = 0;
         for (int i = 0; i < totalres.length; i++) {
@@ -158,4 +157,41 @@ public class Methods {
         return totalres;
     }
 
+    public static int cuan_repite(int[] v) {
+
+        int memori = 0, eval = 0, repite = 0;
+        for (int i = 0; i < v.length; i++) {
+            eval = v[i];
+            int vecesrepite = 0;
+            for (int j = 0; j < v.length; j++) {
+                if (eval == v[j]) {
+                    vecesrepite++;
+                    memori = v[j];
+                }
+                if (vecesrepite >= 2) {
+                    repite = memori;
+
+                }
+            }
+        }
+        return repite;
+    }
+
+    public static int count_repite(int[] v, int eval) {
+        int count = 0;
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == eval) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public static int[] union(int[] v1,int[] v2) {
+        
+        int[] Runion = new int[v1.length+v2.length];
+        
+        
+        return Runion;
+    }
 }

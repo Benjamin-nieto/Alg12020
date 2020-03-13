@@ -168,7 +168,7 @@
                     <StringItem index="12" value="Elementos primos V2"/>
                     <StringItem index="13" value="Suma de un vector1 y vector2"/>
                     <StringItem index="14" value="Resta de un vector1 y vector2"/>
-                    <StringItem index="15" value="Vector que se reite y diga cual es"/>
+                    <StringItem index="15" value="Valor que mas se repite V1"/>
                     <StringItem index="16" value="Union de dos vectores"/>
                     <StringItem index="17" value="Interseccion de los dos conjuntos de vectores"/>
                     <StringItem index="18" value="Diferencia de vector 1 con vector2"/>

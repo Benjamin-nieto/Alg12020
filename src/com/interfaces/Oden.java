@@ -104,7 +104,7 @@ public class Oden extends javax.swing.JFrame {
         });
         panel2.add(btnAction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 190, -1));
 
-        cmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Llenar Vector 1 Automático", "Llenar Vector 2 Automático", "Llenar Vector 1 Manual", "Llenar Vector 2 Manual", "Promedio Elementos V1", "Mayor Valor V2", "Sumatoria V1", "Productoria V2", "Mayor elemento V1", "Menor elemento V2", "Elementos pares V1", "Elementos impares V2", "Elementos primos V2", "Suma de un vector1 y vector2", "Resta de un vector1 y vector2", "Vector que se reite y diga cual es", "Union de dos vectores", "Interseccion de los dos conjuntos de vectores", "Diferencia de vector 1 con vector2", "Diferencia de vector 2 con vector 1" }));
+        cmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Llenar Vector 1 Automático", "Llenar Vector 2 Automático", "Llenar Vector 1 Manual", "Llenar Vector 2 Manual", "Promedio Elementos V1", "Mayor Valor V2", "Sumatoria V1", "Productoria V2", "Mayor elemento V1", "Menor elemento V2", "Elementos pares V1", "Elementos impares V2", "Elementos primos V2", "Suma de un vector1 y vector2", "Resta de un vector1 y vector2", "Valor que mas se repite V1", "Union de dos vectores", "Interseccion de los dos conjuntos de vectores", "Diferencia de vector 1 con vector2", "Diferencia de vector 2 con vector 1" }));
         cmb1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmb1ItemStateChanged(evt);
@@ -326,7 +326,7 @@ public class Oden extends javax.swing.JFrame {
                 area1.append("" + Methods.primos(v1) + "\n");
                 break;
 
-            case 13: // suma V1 + V2
+            case 13: // // SUMA DE VECTOR 1 + VECTOR 2
                 if (v1 == null || v1.length == 0) {
                     JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
                     txt1.requestFocus();
@@ -346,7 +346,7 @@ public class Oden extends javax.swing.JFrame {
                     }
 
                 }
-            case 14:
+            case 14: // RESTA DE VECTOR 1 - VECTOR 2
                 if (v1 == null || v1.length == 0) {
                     JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
                     txt1.requestFocus();
@@ -359,12 +359,27 @@ public class Oden extends javax.swing.JFrame {
                         limiar_e();
                         txt1.requestFocus();
                     } else {
-                        area1.append("LA RESTA DE LOS VECTORES 1 Y 2 ES:"); // QUE ENPANADA
+                        area1.append("LA RESTA DE LOS VECTORES 1 Y 2 ES: "); // QUE ENPANADA
                         area1.append("" + Arrays.toString(Methods.restvectors(vcache, v2)) + "\n");
                         break;
                     }
 
                 }
+                break;
+            case 15: // EL VALOR QUE MAS SE REPITE DEL VECTOR 1 Y CUANTAS VECES SE REPITE
+                
+                if (Methods.cuan_repite(v1) != 0) {
+                    area1.append("EL VALOR QUE MAS SE REPITE DEL VECTOR 1 ES: ");
+                    area1.append("" + Methods.cuan_repite(v1) + "");
+                    area1.append("Y SE REPITE " + Methods.count_repite(v1,Methods.cuan_repite(v1)) + " VECES \n");
+                } else {
+                    area1.append("NINGUN VALOR SE REPITE DEL VECTOR 1");
+                }
+
+                break;
+            case 16: // Union de dos vectores                               -
+                area1.append("LA UNION DE LOS 2 VECTORES ES: \n");
+                area1.append(""+Methods.);
                 break;
 
         }
