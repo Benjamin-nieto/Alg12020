@@ -163,9 +163,9 @@
                     <StringItem index="7" value="Productoria V2"/>
                     <StringItem index="8" value="Mayor elemento V1"/>
                     <StringItem index="9" value="Menor elemento V2"/>
-                    <StringItem index="10" value="Elementos pares"/>
-                    <StringItem index="11" value="Elementos impares"/>
-                    <StringItem index="12" value="Elementos primos"/>
+                    <StringItem index="10" value="Elementos pares V1"/>
+                    <StringItem index="11" value="Elementos impares V2"/>
+                    <StringItem index="12" value="Elementos primos V2"/>
                     <StringItem index="13" value="Suma de un vector1 y vector2"/>
                     <StringItem index="14" value="Resta de un vector1 y vector2"/>
                     <StringItem index="15" value="Vector que se reite y diga cual es"/>

@@ -6,6 +6,7 @@
 package com.interfaces;
 
 import com.methods.Methods;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -15,7 +16,7 @@ import javax.swing.JTextField;
  */
 public class Oden extends javax.swing.JFrame {
 
-    int v1[], v2[];
+    int v1[], v2[], vcache[];
 
     /**
      * Creates new form Oden
@@ -103,7 +104,7 @@ public class Oden extends javax.swing.JFrame {
         });
         panel2.add(btnAction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 190, -1));
 
-        cmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Llenar Vector 1 Automático", "Llenar Vector 2 Automático", "Llenar Vector 1 Manual", "Llenar Vector 2 Manual", "Promedio Elementos V1", "Mayor Valor V2", "Sumatoria V1", "Productoria V2", "Mayor elemento V1", "Menor elemento V2", "Elementos pares", "Elementos impares", "Elementos primos", "Suma de un vector1 y vector2", "Resta de un vector1 y vector2", "Vector que se reite y diga cual es", "Union de dos vectores", "Interseccion de los dos conjuntos de vectores", "Diferencia de vector 1 con vector2", "Diferencia de vector 2 con vector 1" }));
+        cmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Llenar Vector 1 Automático", "Llenar Vector 2 Automático", "Llenar Vector 1 Manual", "Llenar Vector 2 Manual", "Promedio Elementos V1", "Mayor Valor V2", "Sumatoria V1", "Productoria V2", "Mayor elemento V1", "Menor elemento V2", "Elementos pares V1", "Elementos impares V2", "Elementos primos V2", "Suma de un vector1 y vector2", "Resta de un vector1 y vector2", "Vector que se reite y diga cual es", "Union de dos vectores", "Interseccion de los dos conjuntos de vectores", "Diferencia de vector 1 con vector2", "Diferencia de vector 2 con vector 1" }));
         cmb1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmb1ItemStateChanged(evt);
@@ -262,6 +263,7 @@ public class Oden extends javax.swing.JFrame {
             /*VECTORES LLENOS*/
             case 0:  // Llenar Vector 1 Automático
                 area1.append("VECTOR 1 \n");
+                vcache = v1;
                 area1.append(Methods.mostrar(v1) + "\n");
                 break;
             case 1: // Llenar Vector 2 Automático
@@ -271,6 +273,7 @@ public class Oden extends javax.swing.JFrame {
             case 2: // Llenar Vector 1 Manual
                 // v1 = Methods.llenar_manual(v1);
                 area1.append("VECTOR MANUAL 1 \n");
+                vcache = v1;
                 area1.append(Methods.mostrar(v1) + "\n");
                 break;
             case 3: // Llenar Vector 2 Manual
@@ -279,41 +282,91 @@ public class Oden extends javax.swing.JFrame {
                 area1.append(Methods.mostrar(v2) + "\n");
                 break;
             /*VECTORES LLENOS*/
-
             case 4: // Promedio Elementos V1
                 area1.append("PROMEDIO ELEMENTOS VECTOR 1 \n");
-                area1.append("" + Methods.promedio(v1)+"\n");
+                vcache = v1;
+                area1.append("" + Methods.promedio(v1) + "\n");
                 System.out.println(v1[0]);
                 break;
             case 5: // Mayor Valor V2
                 area1.append("MAYOR VALOR VECTOR 2 \n");
-                area1.append("" + Methods.mayor_valor(v2)+"\n");
+                area1.append("" + Methods.mayor_valor(v2) + "\n");
                 break;
             case 6: // Sumatoria V1
                 area1.append("SUMATORIA VECTOR 1 \n");
-                area1.append("" + Methods.sumatoria(v1)+"\n");
+                vcache = v1;
+                area1.append("" + Methods.sumatoria(v1) + "\n");
                 break;
             case 7: // Productoria V2
                 area1.append("PRODUCTORIA VECTOR 2 \n");
-                area1.append("" + Methods.productoria(v2)+"\n");
+                area1.append("" + Methods.productoria(v2) + "\n");
                 break;
-                
-              case 8: // Mayor elemento V1
+
+            case 8: // Mayor elemento V1
                 area1.append("MAYOR ELEMENTO DEL VECTOR 1 \n");
-                area1.append("" + Methods.mayor_q(v1)+"\n");
+                vcache = v1;
+                area1.append("" + Methods.mayor_q(v1) + "\n");
                 break;
             case 9: // Menor Valor V2
                 area1.append("MENOR VALOR VECTOR 2 \n");
-                area1.append("" + Methods.menor_q(v2)+"\n");
+                area1.append("" + Methods.menor_q(v2) + "\n");
                 break;
             case 10: // Pares V1
                 area1.append("CANTIDAD DE ELEMENTOS PARES DEL VECTOR 1 \n");
-                area1.append("" + Methods.par(v1)+"\n");
+                vcache = v1;
+                area1.append("" + Methods.par(v1) + "\n");
                 break;
             case 11: // Impares V2
                 area1.append("CANTIDAD DE ELEMENTOS IMPARES DEL VECTOR 2 \n");
-                area1.append("" + Methods.impar(v2)+"\n");
+                area1.append("" + Methods.impar(v2) + "\n");
                 break;
+            case 12: // Primos V1
+                area1.append("CANTIDAD DE ELEMENTOS PRIMOS DEL VECTOR 1 \n");
+                vcache = v1;
+                area1.append("" + Methods.primos(v1) + "\n");
+                break;
+
+            case 13: // suma V1 + V2
+                if (v1 == null || v1.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt1.requestFocus();
+                } else if (v2 == null || v2.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 2 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt2.requestFocus();
+                } else {
+                    if (v1.length != v2.length) {
+                        JOptionPane.showMessageDialog(this, "El tamaño del los vectores deben ser iguales", "Error", JOptionPane.ERROR_MESSAGE);
+                        limiar_e();
+                        txt1.requestFocus();
+
+                    } else {
+                        area1.append("LA SUMA DE LOS VECTORES 1 Y 2 ES:"); // QUE ENPANADA
+                        area1.append("" + Arrays.toString(Methods.sumvectors(vcache, v2)) + "\n");
+                        break;
+                    }
+
+                }
+            case 14:
+                if (v1 == null || v1.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt1.requestFocus();
+                } else if (v2 == null || v2.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 2 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt2.requestFocus();
+                } else {
+                    if (v1.length != v2.length) {
+                        JOptionPane.showMessageDialog(this, "El tamaño del los vectores deben ser iguales", "Error", JOptionPane.ERROR_MESSAGE);
+                        limiar_e();
+                        txt1.requestFocus();
+                    } else {
+                        area1.append("LA RESTA DE LOS VECTORES 1 Y 2 ES:"); // QUE ENPANADA
+                        area1.append("" + Arrays.toString(Methods.restvectors(vcache, v2)) + "\n");
+                        break;
+                    }
+
+                }
+                break;
+
         }
 
 
@@ -321,7 +374,7 @@ public class Oden extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-         System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
