@@ -93,21 +93,69 @@ public class Methods {
     public static int par(int[] v) {
         int count = 0;
         for (int i = 0; i < v.length; i++) {
-            if (v[i] %2==0) {
-                count ++;
+            if (v[i] % 2 == 0) {
+                count++;
             }
         }
         return count;
     }
 
     public static int impar(int[] v) {
-       int count = 0;
+        int count = 0;
         for (int i = 0; i < v.length; i++) {
-            if (v[i] %2==1) {
-                count ++;
+            if (v[i] % 2 == 1) {
+                count++;
             }
         }
         return count;
+    }
+
+    public static int primos(int[] v) {
+        int init = 0, pri = 0, count = 0;
+        for (int i = 0; i < v.length; i++) {
+            init = v[i];
+            for (int j = 2; j < init; j++) {
+                if (init % j == 0) {
+                    count++;
+                }
+            }
+            if (count < 2) {
+                pri++;
+                i++;
+            }
+
+        }
+        return pri;
+    }
+
+    public static int[] sumvectors(int[] v1,int[] v2) {
+        int[] totalsum = new int[v1.length];
+    //     int[] totalres = new int[v1.length];
+
+        int val1 = 0, val2 = 0;
+        for (int i = 0; i < totalsum.length; i++) {
+            val1 = v1[i];
+            val2 = v2[i];
+            totalsum[i] = (val1 + val2);
+    //      totalres[i] = (val1 - val2);
+        }
+
+        return totalsum;
+    }
+    
+    
+    public static int[] restvectors(int[] v1,int[] v2) {
+       
+       int[] totalres = new int[v1.length];
+
+        int val1 = 0, val2 = 0;
+        for (int i = 0; i < totalres.length; i++) {
+            val1 = v1[i];
+            val2 = v2[i];
+            totalres[i] = (val1 - val2);
+        }
+
+        return totalres;
     }
 
 }
