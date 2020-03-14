@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author erichaag
+ * @author Bnieto
  */
 public class Oden extends javax.swing.JFrame {
 
@@ -305,7 +305,7 @@ public class Oden extends javax.swing.JFrame {
             case 8: // Mayor elemento V1
                 area1.append("MAYOR ELEMENTO DEL VECTOR 1 \n");
                 vcache = v1;
-                area1.append("" + Methods.mayor_q(v1) + "\n");
+                area1.append("" + Methods.mayor_valor(v1) + "\n");
                 break;
             case 9: // Menor Valor V2
                 area1.append("MENOR VALOR VECTOR 2 \n");
@@ -368,19 +368,29 @@ public class Oden extends javax.swing.JFrame {
                 break;
             case 15: // EL VALOR QUE MAS SE REPITE DEL VECTOR 1 Y CUANTAS VECES SE REPITE
                 
-                if (Methods.cuan_repite(v1) != 0) {
+                if (Methods.cual_repite(v1) != 0) {
                     area1.append("EL VALOR QUE MAS SE REPITE DEL VECTOR 1 ES: ");
-                    area1.append("" + Methods.cuan_repite(v1) + "");
-                    area1.append("Y SE REPITE " + Methods.count_repite(v1,Methods.cuan_repite(v1)) + " VECES \n");
+                    area1.append("" + Methods.cual_repite(v1) + "");
+                    area1.append("Y SE REPITE " + Methods.cuantas_repite(v1,Methods.cual_repite(v1)) + " VECES \n");
+                    vcache = v1;
                 } else {
                     area1.append("NINGUN VALOR SE REPITE DEL VECTOR 1");
                 }
 
                 break;
-            case 16: // Union de dos vectores                               -
-                area1.append("LA UNION DE LOS 2 VECTORES ES: \n");
-                area1.append(""+Methods.);
-                break;
+            case 16: // Union de dos vectores                          
+                if (v1 == null || v1.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt1.requestFocus();
+                } else if (v2 == null || v2.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 2 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt2.requestFocus();
+                } else{
+                        area1.append("LA UNION DE LOS VECTORES 1 Y 2 ES: "); // QUE ENPANADA
+                        area1.append("" + Arrays.toString(Methods.union(vcache, v2)) + "\n");
+                        break;
+                  
+                }
 
         }
 

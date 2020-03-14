@@ -9,16 +9,18 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author erichaag
+ * @author Bnieto
  */
 public class Methods {
 
+    // llenar valor automatio
     public static int[] llenar_automatico(int v[]) {
         for (int i = 0; i < v.length; i++) {
             v[i] = (int) (Math.random() * 20) + 1;
         }
         return v;
     }
+    // llenar valor manual
 
     public static int[] llenar_manual(int v[]) {
         for (int i = 0; i < v.length; i++) {
@@ -27,6 +29,7 @@ public class Methods {
         }
         return v;
     }
+    // imprimir vector
 
     public static String mostrar(int v[]) {
         String aux = "";
@@ -35,6 +38,7 @@ public class Methods {
         }
         return aux;
     }
+    // promedio de valores de un vector
 
     public static double promedio(int v[]) {
         double acum = 0;
@@ -43,6 +47,7 @@ public class Methods {
         }
         return acum / v.length;
     }
+    // mayor valor de un vector
 
     public static int mayor_valor(int v[]) {
         int mayor = v[0];
@@ -53,6 +58,7 @@ public class Methods {
         }
         return mayor;
     }
+    // suma de valores de 1 solo vector
 
     public static int sumatoria(int[] v) {
         int aux = 0;
@@ -61,6 +67,7 @@ public class Methods {
         }
         return aux;
     }
+    // productoria de valores de 1 solo vector
 
     public static int productoria(int[] v) {
         int aux = 1;
@@ -70,16 +77,7 @@ public class Methods {
         return aux;
     }
 
-    public static int mayor_q(int[] v) {
-        int aux = 0;
-        for (int i = 0; i < v.length; i++) {
-            if (v[i] > aux) {
-                aux = v[i];
-            }
-        }
-        return aux;
-    }
-
+    // menor valor 
     public static int menor_q(int[] v) {
         int aux = v[0];
         for (int i = 0; i < v.length; i++) {
@@ -89,6 +87,7 @@ public class Methods {
         }
         return aux;
     }
+    // valores pares
 
     public static int par(int[] v) {
         int count = 0;
@@ -100,6 +99,7 @@ public class Methods {
         return count;
     }
 
+    // valores impares
     public static int impar(int[] v) {
         int count = 0;
         for (int i = 0; i < v.length; i++) {
@@ -110,6 +110,7 @@ public class Methods {
         return count;
     }
 
+    // valores primos
     public static int primos(int[] v) {
         int init = 0, pri = 0, count = 0;
         for (int i = 0; i < v.length; i++) {
@@ -128,6 +129,7 @@ public class Methods {
         return pri;
     }
 
+    // suma de valores de 2 vectores
     public static int[] sumvectors(int[] v1, int[] v2) {
         int[] totalsum = new int[v1.length];
         //     int[] totalres = new int[v1.length];
@@ -143,6 +145,7 @@ public class Methods {
         return totalsum;
     }
 
+    // resta de valores de 2 vectores
     public static int[] restvectors(int[] v1, int[] v2) {
 
         int[] totalres = new int[v1.length];
@@ -157,7 +160,8 @@ public class Methods {
         return totalres;
     }
 
-    public static int cuan_repite(int[] v) {
+    // **cual** numero se repite en el vector
+    public static int cual_repite(int[] v) {
 
         int memori = 0, eval = 0, repite = 0;
         for (int i = 0; i < v.length; i++) {
@@ -177,7 +181,8 @@ public class Methods {
         return repite;
     }
 
-    public static int count_repite(int[] v, int eval) {
+    // **cuantas** veces se repite el numero que mas se repite en el vector
+    public static int cuantas_repite(int[] v, int eval) {
         int count = 0;
         for (int i = 0; i < v.length; i++) {
             if (v[i] == eval) {
@@ -186,12 +191,32 @@ public class Methods {
         }
         return count;
     }
-    
-    public static int[] union(int[] v1,int[] v2) {
-        
-        int[] Runion = new int[v1.length+v2.length];
-        
-        
+
+    public static int[] union(int[] v1, int[] v2) {
+
+        int[] Runion = new int[v1.length + v2.length];
+        System.out.println(Runion.length);
+        System.out.println("===================================");
+        for (int i = 0; i < Runion.length; i++) {
+            if (i < v1.length) {
+                Runion[i] = v1[i];
+                System.out.println("v1");
+            } else {
+
+                if (i >= v1.length) { // revisar
+                    for (int j = 0; j < v2.length; j++) {
+                        Runion[i] = v2[j];
+                                        System.out.println("v2");
+
+                    }
+                }
+
+            }
+            System.out.println(i + "-" + Runion[i]);
+
+        }
+
         return Runion;
     }
+
 }
