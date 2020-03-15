@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  * @author Bnieto
  */
 public class Oden extends javax.swing.JFrame {
-    
+
     int v1[], v2[], vcache[];
 
     /**
@@ -181,13 +181,13 @@ public class Oden extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             int tv1, tv2;
-            
+
             tv1 = Integer.parseInt(txt1.getText());
             tv2 = Integer.parseInt(txt2.getText());
-            
+
             v1 = new int[tv1];
             v2 = new int[tv2];
-            
+
             if (v1 != null && v2 != null) {
                 btnAction.setEnabled(true);
             }
@@ -214,10 +214,10 @@ public class Oden extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Valide valores de los vectores");
             txt1.requestFocus();
         }
-        
+
 
     }//GEN-LAST:event_btnCreateActionPerformed
-    
+
     public void valida_filds(JTextField fild) {
         int tv1;
         StringBuffer aux = new StringBuffer(); // requerido para convertir array to string
@@ -233,32 +233,32 @@ public class Oden extends javax.swing.JFrame {
             }
             fild.setText(aux.toString()); // variable devuelta al field
         }
-        
+
     }
-    
+
     public void valida_vector(int[] v) {
         if (v == null) {
             btnCreate.setEnabled(true);
             btnAction.setEnabled(false);
-            
+
         } else {
             if (v.length == 0) {
                 btnCreate.setEnabled(true);
                 btnAction.setEnabled(false);
-                
+
             } else {
                 btnCreate.setEnabled(true);
                 btnAction.setEnabled(true);
             }
-            
+
         }
     }
     private void btnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionActionPerformed
         // TODO add your handling code here:
         int op;
-        
+
         op = cmb1.getSelectedIndex();
-        
+
         switch (op) {
             /*VECTORES LLENOS*/
             case 0:  // Llenar Vector 1 Automático
@@ -301,7 +301,7 @@ public class Oden extends javax.swing.JFrame {
                 area1.append("PRODUCTORIA VECTOR 2 \n");
                 area1.append("" + Methods.productoria(v2) + "\n");
                 break;
-            
+
             case 8: // Mayor elemento V1
                 area1.append("MAYOR ELEMENTO DEL VECTOR 1 \n");
                 vcache = v1;
@@ -325,7 +325,7 @@ public class Oden extends javax.swing.JFrame {
                 vcache = v1;
                 area1.append("" + Methods.primos(v1) + "\n");
                 break;
-            
+
             case 13: // // SUMA DE VECTOR 1 + VECTOR 2
                 if (v1 == null || v1.length == 0) {
                     JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
@@ -338,13 +338,13 @@ public class Oden extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "El tamaño del los vectores deben ser iguales", "Error", JOptionPane.ERROR_MESSAGE);
                         limiar_e();
                         txt1.requestFocus();
-                        
+
                     } else {
                         area1.append("LA SUMA DE LOS VECTORES 1 Y 2 ES:"); // QUE ENPANADA
                         area1.append("" + Arrays.toString(Methods.sumvectors(vcache, v2)) + "\n");
                         break;
                     }
-                    
+
                 }
             case 14: // RESTA DE VECTOR 1 - VECTOR 2
                 if (v1 == null || v1.length == 0) {
@@ -363,7 +363,7 @@ public class Oden extends javax.swing.JFrame {
                         area1.append("" + Arrays.toString(Methods.restvectors(vcache, v2)) + "\n");
                         break;
                     }
-                    
+
                 }
                 break;
             case 15: // EL VALOR QUE MAS SE REPITE DEL VECTOR 1 Y CUANTAS VECES SE REPITE
@@ -376,7 +376,7 @@ public class Oden extends javax.swing.JFrame {
                 } else {
                     area1.append("NINGUN VALOR SE REPITE DEL VECTOR 1");
                 }
-                
+
                 break;
             case 16: // Union de dos vectores                          
                 if (v1 == null || v1.length == 0) {
@@ -387,17 +387,13 @@ public class Oden extends javax.swing.JFrame {
                     txt2.requestFocus();
                 } else {
                     area1.append("LA UNION DE LOS VECTORES 1 Y 2 ES: "); // QUE ENPANADA
-                    area1.append("" + Arrays.toString(Methods.union(vcache, v2)) + "\n");
-                     
-
-                    System.out.println(Arrays.toString(Methods.union_nrepeat(Methods.union(vcache, v2))));
-                    
+                    area1.append("" + Arrays.toString(Methods.union_nrepeat(Methods.union(vcache, v2))) + "\n");
                     break;
-                    
+
                 }
-            
+
         }
-        
+
 
     }//GEN-LAST:event_btnActionActionPerformed
 
@@ -427,7 +423,7 @@ public class Oden extends javax.swing.JFrame {
 
     private void cmb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb1ActionPerformed
         int op2 = cmb1.getSelectedIndex();
-        
+
         switch (op2) {
             case 0: // Llenar Vector 1 Automático
                 valida_vector(v1);
@@ -442,7 +438,7 @@ public class Oden extends javax.swing.JFrame {
                 valida_vector(v2);
                 break;
         }
-        
+
 
     }//GEN-LAST:event_cmb1ActionPerformed
 
@@ -460,7 +456,7 @@ public class Oden extends javax.swing.JFrame {
         // TODO add your handling code here:
         valida_filds(txt2);
     }//GEN-LAST:event_txt2KeyReleased
-    
+
     public void limiar_e() {
         txt1.setText(null);
         txt2.setText(null);

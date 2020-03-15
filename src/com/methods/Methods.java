@@ -217,33 +217,54 @@ public class Methods {
 
     public static int[] union_nrepeat(int[] union) {
 
-        int[] conjunto, nuevo_conjunto;
-        conjunto = union;
- 
-        int cual = cual_repite(conjunto);
-        int cuanto = cuantas_repite(conjunto, cual);
-        
-        System.out.println(Arrays.toString(conjunto));
-        System.out.println("se repite " + cual);
-        System.out.println("" + cuanto + " veces ");
-
-    
-        nuevo_conjunto = new int[conjunto.length];
-
+        int[] nuevo_conjunto = new int[union.length];
+        int temp;
         for (int i = 0; i < nuevo_conjunto.length; i++) {
-
-            if (conjunto[i] == cual_repite(conjunto)) {
-                
-                nuevo_conjunto[i] = 0;
-
-            } else {
-                nuevo_conjunto[i] = conjunto[i];
-
+            nuevo_conjunto = bubble(union);
+            for (int k = 1; k < nuevo_conjunto.length; k++) { // otorga 0
+                for (int h = 0; h < nuevo_conjunto.length - 1; h++) {
+                    if (nuevo_conjunto[h] == nuevo_conjunto[h + 1]) {
+                        temp = nuevo_conjunto[h];
+                        nuevo_conjunto[h] = nuevo_conjunto[h + 1];
+                        nuevo_conjunto[h + 1] = 0;
+                    }
+                }
+            }
+        }
+        int cual = cual_repite(nuevo_conjunto);
+        int cuanto = cuantas_repite(nuevo_conjunto, cual);
+        int new_tam = nuevo_conjunto.length - cuanto;
+        int plus = cuanto;
+        //System.out.println("El " + cual + " se repite " + cuanto + " veces");
+        //System.out.println("nuevo tamaño es " + new_tam);
+        int[] nuevo_conjunto2 = new int[new_tam];
+        for (int i = 0; i < nuevo_conjunto2.length; i++) {
+            if (i < new_tam) {
+                nuevo_conjunto2[i] = nuevo_conjunto[plus];
+                plus++;
             }
 
         }
+       // System.out.println(Arrays.toString(nuevo_conjunto2));
+        // borrar espacio
+        return nuevo_conjunto2;
+    }
 
-        return nuevo_conjunto;
+    public static int[] bubble(int[] matrix) {
+        int temp;
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length - 1; j++) {
+                if (matrix[j] > matrix[j + 1]) {
+                    temp = matrix[j];
+                    matrix[j] = matrix[j + 1];
+                    matrix[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("1. Metodo burbuja");
+        System.out.println(Arrays.toString(matrix));
+
+        return matrix;
     }
 
 }
