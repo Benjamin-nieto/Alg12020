@@ -391,8 +391,8 @@ public class Oden extends javax.swing.JFrame {
                     break;
 
                 }
-                
-                case 17: // interseccion de dos vectores                          
+
+            case 17: // interseccion de dos vectores                          
                 if (v1 == null || v1.length == 0) {
                     JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
                     txt1.requestFocus();
@@ -401,16 +401,17 @@ public class Oden extends javax.swing.JFrame {
                     txt2.requestFocus();
                 } else {
                     area1.append("LA INTERSECCIÓN DE LOS VECTORES 1 Y 2 ES: \n"); // QUE ENPANADA
-                    area1.append("" + Arrays.toString(Methods.intersection(vcache, v2)) + "\n");
-                    
                     if (vcache.length >= v2.length) {
                         area1.append("" + Arrays.toString(Methods.intersection(vcache, v2)) + "\n");
-                    }else{
+                    } else {
                         area1.append("" + Arrays.toString(Methods.intersection(v2, vcache)) + "\n");
                     }
                     break;
                 }
-
+            case 18:
+                break;
+            case 19:
+                break;
         }
 
 

@@ -6,6 +6,7 @@
 package com.methods;
 
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -257,29 +258,35 @@ public class Methods {
         String aux = "";
         int count = 0;
         for (int i = 0; i < v1.length; i++) {
-            System.out.println("Evalues valor:" + v1[i]);
+            //    System.out.println("Evalues valor:" + v1[i]);
             for (int j = 0; j < v2.length; j++) {
-                System.out.println("si elemento v2 en " + j + " es igual a" + v1[j]);
+                //      System.out.println("si elemento v2 en " + j + " es igual a" + v1[j]);
                 if (v2[j] == v1[i]) { // esta
-                    System.out.println("Es igual adicionamos:");
+                    //           System.out.println("Es igual adicionamos:");
                     aux = +v2[j] + "," + aux;
                     count++;
                 }
             }
         }
-        System.out.println(aux);
+        //    System.out.println(aux);
 
         if ((aux != null) && (aux.length() > 0)) {
             result = aux.substring(0, aux.length() - 1);
         }
-        System.out.println(result);
+        //    System.out.println(result);
         int[] maxval = new int[count];
 
         // string with command x,x,x to array 
-        
-        // List<String> items = Arrays.asList(result.split("\\s*,\\s*"));
-              
-      
+        List<String> items = Arrays.asList(result.split("\\s*,\\s*"));
+        for (int i = 0; i < items.size(); i++) {
+            //        System.out.println(items.get(i));
+            maxval[i] = Integer.parseInt(items.get(i));
+        }
+        return union_nrepeat(maxval);
+    }
+    
+    // FALTA
+    public static int[] difference(int[] v1,int[] v2){
         
         return v1;
     }
@@ -296,8 +303,8 @@ public class Methods {
                 }
             }
         }
-        System.out.println("1. Metodo burbuja");
-        System.out.println(Arrays.toString(matrix));
+       // System.out.println("1. Metodo burbuja");
+       // System.out.println(Arrays.toString(matrix));
 
         return matrix;
     }
