@@ -5,6 +5,7 @@
  */
 package com.methods;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -195,28 +196,54 @@ public class Methods {
     public static int[] union(int[] v1, int[] v2) {
 
         int[] Runion = new int[v1.length + v2.length];
-        System.out.println(Runion.length);
-        System.out.println("===================================");
+        //System.out.println(Runion.length); // suma de los 2 vectores para hayar el tamaño
+        //System.out.println("===================================");
         for (int i = 0; i < Runion.length; i++) {
             if (i < v1.length) {
                 Runion[i] = v1[i];
-                System.out.println("v1");
+                // System.out.print("v1 ");
+                // System.out.println(i + "-" + Runion[i]);
             } else {
-
-                if (i >= v1.length) { // revisar
-                    for (int j = 0; j < v2.length; j++) {
-                        Runion[i] = v2[j];
-                                        System.out.println("v2");
-
-                    }
+                for (int j = 0; j < v2.length; j++) {
+                    Runion[i] = v2[j];
+                    // System.out.print("v2 ");
+                    // System.out.println(i + "-" + Runion[i]);
+                    i++;
                 }
+            }
+        }
+        return Runion;
+    }
+
+    public static int[] union_nrepeat(int[] union) {
+
+        int[] conjunto, nuevo_conjunto;
+        conjunto = union;
+ 
+        int cual = cual_repite(conjunto);
+        int cuanto = cuantas_repite(conjunto, cual);
+        
+        System.out.println(Arrays.toString(conjunto));
+        System.out.println("se repite " + cual);
+        System.out.println("" + cuanto + " veces ");
+
+    
+        nuevo_conjunto = new int[conjunto.length];
+
+        for (int i = 0; i < nuevo_conjunto.length; i++) {
+
+            if (conjunto[i] == cual_repite(conjunto)) {
+                
+                nuevo_conjunto[i] = 0;
+
+            } else {
+                nuevo_conjunto[i] = conjunto[i];
 
             }
-            System.out.println(i + "-" + Runion[i]);
 
         }
 
-        return Runion;
+        return nuevo_conjunto;
     }
 
 }
