@@ -222,8 +222,8 @@ public class Oden extends javax.swing.JFrame {
         int tv1;
         StringBuffer aux = new StringBuffer(); // requerido para convertir array to string
         try {
-            tv1 = Integer.parseInt(fild.getText()); // si valor es numero bien
-        } catch (NumberFormatException e) { // si no es numero
+            tv1 = Integer.parseInt(fild.getText()); // si valor es numero, bien
+        } catch (NumberFormatException e) { // si no es numero, entonces
             JOptionPane.showMessageDialog(this, "Valor no valido solo numeros"); // mensaje de error y
             fild.requestFocus();
             String s = fild.getText(); // luego de poner el foco busco el texto
@@ -390,6 +390,25 @@ public class Oden extends javax.swing.JFrame {
                     area1.append("" + Arrays.toString(Methods.union_nrepeat(Methods.union(vcache, v2))) + "\n");
                     break;
 
+                }
+                
+                case 17: // interseccion de dos vectores                          
+                if (v1 == null || v1.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt1.requestFocus();
+                } else if (v2 == null || v2.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 2 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt2.requestFocus();
+                } else {
+                    area1.append("LA INTERSECCIÓN DE LOS VECTORES 1 Y 2 ES: \n"); // QUE ENPANADA
+                    area1.append("" + Arrays.toString(Methods.intersection(vcache, v2)) + "\n");
+                    
+                    if (vcache.length >= v2.length) {
+                        area1.append("" + Arrays.toString(Methods.intersection(vcache, v2)) + "\n");
+                    }else{
+                        area1.append("" + Arrays.toString(Methods.intersection(v2, vcache)) + "\n");
+                    }
+                    break;
                 }
 
         }

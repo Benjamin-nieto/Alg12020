@@ -245,11 +245,46 @@ public class Methods {
             }
 
         }
-       // System.out.println(Arrays.toString(nuevo_conjunto2));
+        // System.out.println(Arrays.toString(nuevo_conjunto2));
         // borrar espacio
         return nuevo_conjunto2;
     }
 
+    public static int[] intersection(int[] v1, int[] v2) {
+
+        // maximo valor de los vectores unidos
+        String result = null;
+        String aux = "";
+        int count = 0;
+        for (int i = 0; i < v1.length; i++) {
+            System.out.println("Evalues valor:" + v1[i]);
+            for (int j = 0; j < v2.length; j++) {
+                System.out.println("si elemento v2 en " + j + " es igual a" + v1[j]);
+                if (v2[j] == v1[i]) { // esta
+                    System.out.println("Es igual adicionamos:");
+                    aux = +v2[j] + "," + aux;
+                    count++;
+                }
+            }
+        }
+        System.out.println(aux);
+
+        if ((aux != null) && (aux.length() > 0)) {
+            result = aux.substring(0, aux.length() - 1);
+        }
+        System.out.println(result);
+        int[] maxval = new int[count];
+
+        // string with command x,x,x to array 
+        
+        // List<String> items = Arrays.asList(result.split("\\s*,\\s*"));
+              
+      
+        
+        return v1;
+    }
+
+    /// ==== SORT METHOD
     public static int[] bubble(int[] matrix) {
         int temp;
         for (int i = 1; i < matrix.length; i++) {
