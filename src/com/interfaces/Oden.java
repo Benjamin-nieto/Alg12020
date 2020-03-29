@@ -409,8 +409,21 @@ public class Oden extends javax.swing.JFrame {
                     break;
                 }
             case 18:
+                if (v1 == null || v1.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 1 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt1.requestFocus();
+                } else if (v2 == null || v2.length == 0) {
+                    JOptionPane.showMessageDialog(this, "Vector numero 2 no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                    txt2.requestFocus();
+                } else {
+                    area1.append("LA INTERSECCIÓN DE LOS VECTORES 1 "+Arrays.toString(v1)+" Y 2 "+Arrays.toString(v2)+" ES: \n"); // QUE ENPANADA
+                    
+                    
+                }
+                
                 break;
             case 19:
+                
                 break;
         }
 
