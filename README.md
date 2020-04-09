@@ -1,6 +1,6 @@
 # Alg12020 - Vectores interfaces
 
-**Personal project - University**
+Personal project - University
 
 The personal project for vectors practice and creation and filling method.
 calculation of mathematical operations, using vectors and printing them in graphic interface.
